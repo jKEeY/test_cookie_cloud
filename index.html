@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        ! function (c) {
+            window[c] = window[c] || {
+                q: []
+            };
+            window[c].ready = function (n) {
+                return new Promise(function (e, o) {
+                    window[c].q.push([n, e, o])
+                })
+            };
+            a = document.createElement("script"), m = document.getElementsByTagName("script")[0];
+            a.async = 1, a.src = "https://cloudcookie.io/cloudcookie.js#a=f13d7e3ce9ef9e6f2685d9351a1ad618";
+            a.id = "ccscript", m.parentNode.insertBefore(a, m)
+        }("CloudCookie");
+    </script>
+
+    <script>
+        var COOKIE_NAME = 'caltat_id'
+        CloudCookie.ready().then(function () { //ready will be called once cloud cookie is ready            
+            CloudCookie.config({ // configure our cloud cookie instance
+                public_access_token: 'f13d7e3ce9ef9e6f2685d9351a1ad618'
+            })
+            return CloudCookie.set({ // Set our custom cookie
+                name: COOKIE_NAME,
+                value: 'test',
+                days_until_expiration: '7'
+            })
+        }).then(function () {
+            return CloudCookie.get(COOKIE_NAME) // Get the cookie we just set
+        }).then(function (cookie_response) {
+            console.log('Received cookie ' + cookie_response.value); // Do something with the cookie we received
+        })
+    </script>
+</body>
+
+</html>
